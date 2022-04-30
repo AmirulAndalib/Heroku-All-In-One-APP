@@ -1,0 +1,9 @@
+version: "3.3"
+
+services:
+  hmscore:
+    build: .
+    entrypoint: ["sh","/.hms/entrypoint.sh"]
+    restart: on-failure
+    ports:
+      - "80:80"

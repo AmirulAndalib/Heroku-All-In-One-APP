@@ -6,11 +6,11 @@ if [ "${MODE}" = "build" ]; then
 fi
 
 # Run rclone
-htpasswd -csb /.aria2allinoneworkdir/htpasswd ${GLOBAL_USER} ${GLOBAL_PASSWORD}
+htpasswd -csb /.hms/htpasswd ${GLOBAL_USER} ${GLOBAL_PASSWORD}
 exec 2>&1
 exec rclone rcd --rc-serve \
 --rc-web-gui-no-open-browser \
---rc-htpasswd=/.aria2allinoneworkdir/htpasswd \
+--rc-htpasswd=/.hms/htpasswd \
 --rc-addr=localhost:56802 \
 --buffer-size 4M \
 --transfers 4 \

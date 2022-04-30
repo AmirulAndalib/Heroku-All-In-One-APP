@@ -31,7 +31,7 @@ handle {$GLOBAL_PORTAL_PATH}/ariang* {
         basicauth {
                 {$GLOBAL_USER} HASH
         }
-        root * /.aria2allinoneworkdir/ariang
+        root * /.hms/ariang
         file_server
 }
 # Configure Rclone Web UI
@@ -41,7 +41,7 @@ handle {$GLOBAL_PORTAL_PATH}/rcloneweb* {
         basicauth {
                 {$GLOBAL_USER} HASH
         }
-        root * /.aria2allinoneworkdir/rcloneweb/build
+        root * /.hms/rcloneweb/build
         file_server
 }
 # Configure Rclone RC
@@ -77,6 +77,6 @@ handle {$GLOBAL_PORTAL_PATH}* {
         basicauth {              
                 {$GLOBAL_USER} HASH
         }
-        root * /.aria2allinoneworkdir/homer
+        root * /.hms/homer
         file_server
 }
