@@ -10,10 +10,7 @@ COPY ./content /.hms/
 
 ARG MODE=build
 
-
-RUN apt-get update && apt-get clean && apt-get autoclean && apt-get -y update
-
-RUN apt-get install wget curl jq pv bash findutils runit aria2 apache2-utils tzdata ttyd unzip zip unzip p7zip-full p7zip-rar xz-utils ffmpeg busybox -y \
+RUN apt-get update -y && apt-get upgrade -y && apt-get install wget curl jq pv bash findutils runit aria2 apache2-utils tzdata ttyd unzip zip unzip p7zip-full p7zip-rar xz-utils ffmpeg busybox -y \
     && curl -sS https://webinstall.dev/caddy | bash \
     && curl https://rclone.org/install.sh | bash -s beta \
     && mkdir /.hms/ariang && wget -qO - https://github.com/mayswind/AriaNg/releases/download/1.2.3/AriaNg-1.2.3.zip | busybox unzip -qd /.hms/ariang - \
