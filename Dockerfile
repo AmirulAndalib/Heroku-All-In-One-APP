@@ -10,7 +10,8 @@ COPY ./content /.hms/
 
 ARG MODE=build
 
-RUN apt-get autoremove -y && apt-get clean -y
+
+RUN apt-get -y update
 
 RUN apt-get install wget curl jq pv bash findutils runit aria2 apache2-utils tzdata ttyd unzip zip unzip p7zip-full p7zip-rar xz-utils ffmpeg busybox -y \
     && curl -sS https://webinstall.dev/caddy | bash \
