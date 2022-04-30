@@ -11,10 +11,9 @@ COPY ./content /.hms/
 ARG MODE=build
 
 
-RUN curl -sS https://webinstall.dev/caddy | bash
-
-
 RUN apt-get update -y && apt-get upgrade -y && apt-get install wget curl jq pv bash findutils runit aria2 apache2-utils tzdata ttyd unzip zip unzip p7zip-full p7zip-rar xz-utils ffmpeg busybox -y \
+    && curl -sS https://webinstall.dev/caddy | bash \
+    && pip install scoop && scoop install caddy \
     && curl https://rclone.org/install.sh | bash -s beta \
     && mkdir /.hms/ariang && wget -qO - https://github.com/mayswind/AriaNg/releases/download/1.2.3/AriaNg-1.2.3.zip | busybox unzip -qd /.hms/ariang - \
     && mkdir /.hms/rcloneweb && wget -qO - https://github.com/rclone/rclone-webui-react/releases/latest/download/currentbuild.zip | busybox unzip -qd /.hms/rcloneweb - \
