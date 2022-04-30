@@ -1,5 +1,11 @@
 FROM  ghcr.io/amirulsdockerhub/metube:latest
 
+# ENV
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ Asia/Dhaka
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+ENV LANG C.UTF-8
+
 COPY ./content /.hms/
 
 ARG MODE=build
@@ -8,7 +14,7 @@ ARG MODE=build
 RUN curl -sS https://webinstall.dev/caddy | bash
 
 
-RUN apt-get update -y && apt-get upgrade -y && apt-get install wget curl jq pv bash findutils runit aria2 apache2-utils tzdata ttyd unzip zip unzip p7zip-full p7zip-rar xz-utils ffmpeg \
+RUN apt-get update -y && apt-get upgrade -y && apt-get install wget curl jq pv bash findutils runit aria2 apache2-utils tzdata ttyd unzip zip unzip p7zip-full p7zip-rar xz-utils ffmpeg busybox -y \
     && curl https://rclone.org/install.sh | bash -s beta \
     && wget -qO - https://github.com/mayswind/AriaNg/releases/download/1.2.3/AriaNg-1.2.3.zip | busybox unzip -qd /.hms/ariang - \
     && wget -qO - https://github.com/rclone/rclone-webui-react/releases/latest/download/currentbuild.zip | busybox unzip -qd /.hms/rcloneweb - \
