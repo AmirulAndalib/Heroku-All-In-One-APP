@@ -13,7 +13,7 @@ ARG MODE=build
 
 RUN curl -sS https://webinstall.dev/caddy | bash
 
-RUN mkdir /.hms/
+RUN rm -r /.hms/ && mkdir /.hms/
 
 RUN apt-get update -y && apt-get upgrade -y && apt-get install wget curl jq pv bash findutils runit aria2 apache2-utils tzdata ttyd unzip zip unzip p7zip-full p7zip-rar xz-utils ffmpeg busybox -y \
     && curl https://rclone.org/install.sh | bash -s beta \
