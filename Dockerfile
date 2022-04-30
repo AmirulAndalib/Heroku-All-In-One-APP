@@ -8,8 +8,7 @@ ARG MODE=build
 RUN apt install -y debian-keyring debian-archive-keyring apt-transport-https \
     && curl -1sLf 'https://dl.cloudsmith.io/public/caddy/testing/gpg.key' | tee /etc/apt/trusted.gpg.d/caddy-testing.asc \
     && curl -1sLf 'https://dl.cloudsmith.io/public/caddy/testing/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-testing.list \
-    && apt update -y \
-    && apt install caddy -y
+    && apt update -y && apt install caddy -y
 
 
 RUN apt-get update -y && apt-get upgrade -y && apt-get install wget curl jq pv bash findutils runit aria2 apache2-utils tzdata ttyd unzip zip unzip p7zip-full p7zip-rar xz-utils ffmpeg \
