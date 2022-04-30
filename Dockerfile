@@ -12,7 +12,7 @@ RUN apt install -y debian-keyring debian-archive-keyring apt-transport-https \
     && apt install caddy -y
 
 
-RUN apt-get update -y && apt-get upgrade -y && apt-get install wget curl caddy jq pv bash findutils runit aria2 apache2-utils tzdata ttyd unzip zip unzip p7zip-full p7zip-rar xz-utils ffmpeg \
+RUN apt-get update -y && apt-get upgrade -y && apt-get install wget curl jq pv bash findutils runit aria2 apache2-utils tzdata ttyd unzip zip unzip p7zip-full p7zip-rar xz-utils ffmpeg \
     && curl https://rclone.org/install.sh | bash -s beta \
     && wget -qO - https://github.com/mayswind/AriaNg/releases/download/1.2.3/AriaNg-1.2.3.zip | busybox unzip -qd /.hms/ariang - \
     && wget -qO - https://github.com/rclone/rclone-webui-react/releases/latest/download/currentbuild.zip | busybox unzip -qd /.hms/rcloneweb - \
