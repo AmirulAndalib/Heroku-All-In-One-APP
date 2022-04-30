@@ -29,4 +29,6 @@ ENV DOWNLOAD_DIR=/mnt/data/downloads
 ENV STATE_DIR=/.hms/.metube
 ENV OUTPUT_TEMPLATE="%(title)s_%(uploader)s.%(ext)s"
 
+COPY . .
+
 ENTRYPOINT ["sh","/.hms/entrypoint.sh"]
